@@ -1,3 +1,4 @@
+import React from "react";
 import { Posts } from "@/app/components/Posts";
 import { sanityFetch } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/lib/queries";

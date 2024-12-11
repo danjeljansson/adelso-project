@@ -3,14 +3,13 @@ export const castData = [
     name: "Sussi Persson",
     role: "Lead",
     about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunc. ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunclacinia aliquet. Nullam nec nunc nec nunc. ut purus eget",
     imageUrl: "/images/cast/sussi_larsson.jpg",
   },
   {
     name: "Sussi Ebensson",
     role: "Lead",
-    about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
+    about: "Sussi is a seasoned actress ",
     imageUrl: "/images/cast/sussi_larsson.jpg",
   },
   {
@@ -23,8 +22,7 @@ export const castData = [
   {
     name: "Sussi Jansson",
     role: "Lead",
-    about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
+    about: "",
     imageUrl: "/images/cast/sussi_larsson.jpg",
   },
   {
