@@ -5,6 +5,8 @@ import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { castData } from "@/app/data/castData";
 import Hero from "@/app/components/Hero";
 import CastList from "@/app/components/Cast";
+import { aboutUsData } from "@/app/data/aboutUsData";
+import About from "@/app/components/About";
 
 export default async function Page() {
   const { data: posts } = await sanityFetch({
@@ -16,6 +18,7 @@ export default async function Page() {
       <Hero />
       <Posts posts={posts} />;
       <CastList cast={castData} />
+      <About aboutUsData={aboutUsData} />
     </div>
   );
 }
