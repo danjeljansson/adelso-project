@@ -3,7 +3,7 @@ import Header from "@/app/components/Header";
 
 const Hero = () => {
   return (
-    <div className="flex justify-center items-center h-86 bg-yellow-100">
+    <div className="h-86 priority flex w-auto items-center justify-center bg-yellow-100">
       <Header />
     </div>
   );

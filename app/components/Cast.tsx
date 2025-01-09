@@ -32,9 +32,9 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
               <Image
                 src={member.imageUrl}
                 alt={member.name}
-                layout="fill"
-                objectFit="cover"
-                className="cursor-pointer rounded-t-lg"
+                fill
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 40vw"
+                className="cursor-pointer rounded-t-lg object-cover"
               />
             </div>
             <div className="flex h-full w-full flex-col p-4 text-center">
