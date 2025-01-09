@@ -9,5 +9,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // ...other config settings
 };
+
+export default nextConfig;
