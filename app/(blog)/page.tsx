@@ -7,6 +7,7 @@ import Hero from "@/app/components/Hero";
 import CastList from "@/app/components/Cast";
 import { aboutUsData } from "@/app/data/aboutUsData";
 import About from "@/app/components/About";
+import FindUs from "@/app/components/FindUs";
 
 export default async function Page() {
   const { data: posts } = await sanityFetch({
@@ -16,9 +17,10 @@ export default async function Page() {
   return (
     <div className="flex flex-col justify-center">
       <Hero />
-      <Posts posts={posts} />;
+      <Posts posts={posts} />
       <CastList cast={castData} />
       <About aboutUsData={aboutUsData} />
+      <FindUs />
     </div>
   );
 }
