@@ -1,30 +1,46 @@
-import React from "react";
+"use client";
 
-const ListItem: React.FunctionComponent<{ children: React.ReactNode }> = ({
+import React from "react";
+import { Link } from "react-scroll";
+
+type ListItemProps = {
+  children: React.ReactNode;
+  onClick?: () => void;
+  to: string;
+};
+
+const ListItem: React.FunctionComponent<ListItemProps> = ({
+  to,
   children,
+  onClick,
 }) => (
-  <li className="gap-16 bg-amber-600 hover:bg-blue-50 px-4 py-2 rounded">
-    {children}
+  <li
+    onClick={onClick}
+    className="rounded bg-amber-600 px-4 py-2 text-center transition-colors duration-200 hover:bg-blue-50"
+  >
+    <Link to={to} smooth={true} duration={500} className="cursor-pointer">
+      {children}
+    </Link>
   </li>
 );
 
-export default function HorizontalList() {
+export default function HorizontalList({ onClick }: { onClick?: () => void }) {
   return (
-    <ul className="flex justify-center items-center gap-4">
-      <ListItem>
-        <a href="#">Home</a>
+    <ul className="flex max-w-xs flex-wrap items-center justify-center gap-4 sm:max-w-md lg:max-w-lg">
+      <ListItem onClick={onClick} to="home">
+        Home
       </ListItem>
-      <ListItem>
-        <a href="#">Ensemble</a>
+      <ListItem onClick={onClick} to="ensemble">
+        Ensamble
       </ListItem>
-      <ListItem>
-        <a href="#">Boka Biljett</a>
+      <ListItem onClick={onClick} to="ticket">
+        Boka Biljett
       </ListItem>
-      <ListItem>
-        <a href="#">Hitta Hit</a>
+      <ListItem onClick={onClick} to="about">
+        Om Oss
       </ListItem>
-      <ListItem>
-        <a href="#">Samarbeten</a>
+      <ListItem onClick={onClick} to="contact">
+        Kontakt
       </ListItem>
     </ul>
   );

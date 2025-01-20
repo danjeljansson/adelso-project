@@ -19,7 +19,7 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
   const [selectedMember, setSelectedMember] = useState<CastMember | null>(null);
 
   return (
-    <div className="p-8">
+    <section id="ensemble" className="p-8">
       <h2 className="mb-8 text-center text-3xl font-bold">Meet the Cast</h2>
       <ul className="grid grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
         {cast.map((member) => (
@@ -56,7 +56,7 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
           onClose={() => setSelectedMember(null)}
         />
       )}
-    </div>
+    </section>
   );
 };
 

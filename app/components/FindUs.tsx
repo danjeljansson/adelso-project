@@ -30,21 +30,27 @@ const FindUs: React.FunctionComponent = () => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl p-6">
+    <section id="contact" className="mx-auto max-w-4xl p-6">
       <h2 className="mb-6 text-center text-3xl font-bold">Find Us</h2>
-      <div className="flex flex-col gap-2 md:flex-row">
+      <div className="flex flex-col gap-4 md:flex-row md:gap-6">
         <div className="flex-1">
-          <GoogleMap
-            mapContainerStyle={{ width: "300px", height: "300px" }}
-            center={center}
-            zoom={11}
-            onLoad={onLoad}
-            options={{ disableDefaultUI: true, zoomControl: true }}
-          >
-            <Marker position={center} />
-          </GoogleMap>
+          <div className="relative h-0 w-full pb-[75%]">
+            <GoogleMap
+              mapContainerStyle={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+              }}
+              center={center}
+              zoom={11}
+              onLoad={onLoad}
+              options={{ disableDefaultUI: true, zoomControl: true }}
+            >
+              <Marker position={center} />
+            </GoogleMap>
+          </div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 flex-wrap text-center md:text-left">
           <p>
             Our office is located at the address below. You can use the map to
             find directions from your location.
@@ -58,7 +64,7 @@ const FindUs: React.FunctionComponent = () => {
           </address>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
