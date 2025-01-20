@@ -15,10 +15,13 @@
     "@sanity/vision": "^3.69.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/google.maps": "^3.58.1",
+    "@types/react-scroll": "^1.8.10",
     "next": "15.0.3",
     "next-sanity": "^9.8.32",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
+    "react-scroll": "^1.9.0",
     "sanity": "^3.69.0",
     "styled-components": "^6.1.14"
   },
