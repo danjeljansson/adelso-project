@@ -14,11 +14,14 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
   children,
   onClick,
 }) => (
-  <li
-    onClick={onClick}
-    className="rounded bg-amber-600 px-4 py-2 text-center transition-colors duration-200 hover:bg-blue-50"
-  >
-    <Link to={to} smooth={true} duration={500} className="cursor-pointer">
+  <li className="rounded bg-gray-700 px-2 py-1 text-center transition-colors duration-200 hover:bg-blue-50">
+    <Link
+      to={to}
+      smooth={true}
+      duration={500}
+      onClick={onClick}
+      className="cursor-pointer"
+    >
       {children}
     </Link>
   </li>
@@ -26,10 +29,11 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
 
 export default function HorizontalList({ onClick }: { onClick?: () => void }) {
   return (
-    <ul className="flex max-w-xs flex-wrap items-center justify-center gap-4 sm:max-w-md lg:max-w-lg">
-      <ListItem onClick={onClick} to="home">
-        Home
-      </ListItem>
+    <ul className="flex flex-col items-center gap-4 sm:flex-row sm:gap-4">
+      {/* For now */}
+      {/*<ListItem onClick={onClick} to="home">*/}
+      {/*  Home*/}
+      {/*</ListItem>*/}
       <ListItem onClick={onClick} to="ensemble">
         Ensamble
       </ListItem>
