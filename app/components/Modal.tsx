@@ -57,9 +57,8 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
             <Image
               src={member.imageUrl}
               alt={member.name}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full"
+              fill={true}
+              className="sizes='(max-width: 640px) 128px, (max-width: 768px) 160px, 40vw' rounded-full object-cover"
             />
           </div>
           <h3 className="text-2xl font-bold">{member.name}</h3>

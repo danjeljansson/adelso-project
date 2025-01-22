@@ -14,7 +14,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
   children,
   onClick,
 }) => (
-  <li className="rounded bg-gray-700 px-2 py-1 text-center transition-colors duration-200 hover:bg-blue-50">
+  <li className="rounded bg-gray-950 px-2 py-1 text-center text-white transition-colors duration-200 hover:bg-gray-800">
     <Link
       to={to}
       smooth={true}
@@ -35,7 +35,7 @@ export default function HorizontalList({ onClick }: { onClick?: () => void }) {
       {/*  Home*/}
       {/*</ListItem>*/}
       <ListItem onClick={onClick} to="ensemble">
-        Ensamble
+        Ensemble
       </ListItem>
       <ListItem onClick={onClick} to="ticket">
         Boka Biljett

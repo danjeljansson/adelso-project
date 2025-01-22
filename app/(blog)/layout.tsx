@@ -2,6 +2,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import { DisableDraftMode } from "@/app/components/DisableDraftMode";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
+import React from "react";
 
 export default async function RootLayout({
   children,
@@ -9,7 +10,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen bg-white">
       {children}
       <SanityLive />
       {(await draftMode()).isEnabled && (

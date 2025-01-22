@@ -20,7 +20,7 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
 
   return (
     <section id="ensemble" className="p-8">
-      <h2 className="mb-8 text-center text-3xl font-bold">Meet the Cast</h2>
+      <h2 className="mb-8 text-center text-3xl font-bold">Ensemble</h2>
       <ul className="grid grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
         {cast.map((member) => (
           <li
@@ -32,7 +32,7 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
               <Image
                 src={member.imageUrl}
                 alt={member.name}
-                fill
+                fill={true}
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 40vw"
                 className="cursor-pointer rounded-t-lg object-cover"
               />

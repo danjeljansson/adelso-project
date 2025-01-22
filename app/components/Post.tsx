@@ -9,11 +9,11 @@ export function Post({ post }: { post: NonNullable<POST_QUERYResult> }) {
   const { _id, _type, title, mainImage, body, relatedPosts } = post;
 
   return (
-    <main className="container mx-auto prose prose-lg p-4">
+    <main className="container prose prose-lg mx-auto p-4">
       {title ? <h1>{title}</h1> : null}
       {mainImage?.asset?._ref ? (
         <Image
-          className="float-left m-0 w-1/3 mr-4 rounded-lg"
+          className="float-left m-0 mr-4 w-1/3 rounded-lg"
           src={urlFor(mainImage?.asset?._ref).width(300).height(300).url()}
           width={300}
           height={300}
