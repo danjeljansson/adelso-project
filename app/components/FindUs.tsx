@@ -53,10 +53,18 @@ const FindUs: React.FunctionComponent = () => {
         <div className="flex-1 flex-wrap text-center md:text-left">
           <strong>Från Brommaplan</strong>
           <p>
-            Ta buss 311 till Sjöängen. Gå av och ta en gratis färja över till
-            Adelsö för att sedan promenera till Pannrummet (ca 10-15 min), eller
-            byt till buss i Sjöängen, gå av vid hållplats Adelsö Gård och
-            promenera därifrån till teatern.
+            Ta buss 311 till Sjöängen, gå av och ta en gratis färja över till
+            Adelsö för att sedan promenera till Pannrummet (ca 10-15 min){" "}
+            <strong>ELLER</strong> byt till buss 312 i Sjöängen, gå av vid
+            hållplats Adelsö Gård och promenera därifrån till teatern.
+            <p>
+              Hela resvägen omfattas av Stockholms Lokaltrafik (SL). Bussarna
+              går minst en gång i timmen.
+            </p>
+            <p>
+              Gratis parkering finns på området, se till att vara på plats i god
+              tid...
+            </p>
           </p>
           <address>
             <br />
