@@ -31,7 +31,7 @@ const FindUs: React.FunctionComponent = () => {
 
   return (
     <section id="contact" className="mx-auto max-w-4xl p-6">
-      <h2 className="mb-6 text-center text-3xl font-bold">Find Us</h2>
+      <h2 className="mb-6 text-center text-3xl font-bold">Hitta Oss</h2>
       <div className="flex flex-col gap-4 md:flex-row md:gap-6">
         <div className="flex-1">
           <div className="relative h-0 w-full pb-[75%]">
@@ -51,16 +51,18 @@ const FindUs: React.FunctionComponent = () => {
           </div>
         </div>
         <div className="flex-1 flex-wrap text-center md:text-left">
+          <strong>Från Brommaplan</strong>
           <p>
-            Our office is located at the address below. You can use the map to
-            find directions from your location.
+            Ta buss 311 till Sjöängen. Gå av och ta en gratis färja över till
+            Adelsö för att sedan promenera till Pannrummet (ca 10-15 min), eller
+            byt till buss i Sjöängen, gå av vid hållplats Adelsö Gård och
+            promenera därifrån till teatern.
           </p>
           <address>
-            <strong>Our Company</strong>
             <br />
-            1234 Main St
+            Adelsö Ringväg 31
             <br />
-            Springfield, IL 62701
+            178 92 Adelsö
           </address>
         </div>
       </div>
