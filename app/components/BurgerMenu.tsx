@@ -28,7 +28,7 @@ const BurgerMenu: React.FunctionComponent<BurgerMenuProps> = ({
         aria-label="Meny"
         aria-expanded={burgerOpen}
       >
-        <LuMenu size={32} />
+        <LuMenu className="text-3xl sm:text-4xl lg:text-5xl" />
         {burgerOpen}
       </button>
     </div>
