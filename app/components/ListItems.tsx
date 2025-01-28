@@ -29,7 +29,7 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
 
 export default function HorizontalList({ onClick }: { onClick?: () => void }) {
   return (
-    <ul className="flex flex-col items-center gap-4 sm:flex-row sm:gap-4">
+    <ul className="flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
       {/* For now */}
       {/*<ListItem onClick={onClick} to="home">*/}
       {/*  Home*/}
@@ -44,7 +44,7 @@ export default function HorizontalList({ onClick }: { onClick?: () => void }) {
         Om Oss
       </ListItem>
       <ListItem onClick={onClick} to="contact">
-        Kontakt
+        Hitta Hit
       </ListItem>
     </ul>
   );
