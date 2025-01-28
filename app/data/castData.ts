@@ -1,40 +1,61 @@
 export const castData = [
   {
-    name: "Sussi Persson",
-    role: "Lead",
+    name: "sussi person",
+    role: "Regissör",
     about:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunc. ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunclacinia aliquet. Nullam nec nunc nec nunc. ut purus eget",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
+    imageUrl: "/images/cast/adam_wilson.jpeg",
   },
   {
-    name: "Sussi Ebensson",
-    role: "Lead",
+    name: "Adam Wilson Wallnäs",
+    role: "Rekvisitör",
     about: "Sussi is a seasoned actress ",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
+    imageUrl: "/images/cast/ebba_irestad.jpg",
   },
   {
-    name: "Sussi Svensson",
-    role: "Lead",
+    name: "Östgötateatern",
+    role: "Kostym",
     about:
       "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
+    imageUrl: "/images/cast/johan_charles.jpeg",
   },
   {
-    name: "Sussi Jansson",
-    role: "Lead",
+    name: "Johanna Lysdahl",
+    role: "Maskdesign",
     about: "",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
+    imageUrl: "/images/cast/niki_gunke.jpg",
   },
   {
-    name: "Sussi Karlsson",
-    role: "Lead",
+    name: "Adelsö Friluftsteater",
+    role: "Producent",
+    about:
+      "Sussi is a seasoned actress with a long career in theater and film.",
+    imageUrl: "/images/cast/petra_nielsen.jpg",
+  },
+  {
+    name: "Birkakören",
+    role: "Teknik",
     about:
       "Sussi is a seasoned actress with a long career in theater and film.",
     imageUrl: "/images/cast/sussi_larsson.jpg",
   },
   {
-    name: "Sussi Jonsson",
-    role: "Lead",
+    name: "Claes",
+    role: "Ljudtekniker",
+    about:
+      "Sussi is a seasoned actress with a long career in theater and film.",
+    imageUrl: "/images/cast/sussi_larsson.jpg",
+  },
+  {
+    name: "Retuchering av affisch samt textlayout:",
+    role: "Jens Lennartsson",
+    about:
+      "Sussi is a seasoned actress with a long career in theater and film.",
+    imageUrl: "/images/cast/sussi_larsson.jpg",
+  },
+  {
+    name: "Izabella Tancredi",
+    role: "Foto och film",
     about:
       "Sussi is a seasoned actress with a long career in theater and film.",
     imageUrl: "/images/cast/sussi_larsson.jpg",
