@@ -19,7 +19,7 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
   const [selectedMember, setSelectedMember] = useState<CastMember | null>(null);
 
   return (
-    <section id="ensemble" className="p-4">
+    <section id="ensemble" className="rounded-lg p-4">
       <h2 className="mb-8 text-center text-3xl font-bold">Ensemble</h2>
       <ul className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:gap-4 xl:gap-3">
         {cast.map((member) => (
@@ -34,14 +34,14 @@ const CastList: React.FunctionComponent<CastListProps> = ({ cast: cast }) => {
                 alt={member.name}
                 fill={true}
                 sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 40vw"
-                className="cursor-pointer rounded-t-lg object-cover"
+                className="cursor-pointer rounded-t-lg object-cover grayscale"
               />
             </div>
             <div className="flex h-full w-full flex-col p-4 text-center">
-              <h3 className="truncate text-lg font-semibold text-gray-800">
+              <h3 className="truncate text-xl font-semibold text-gray-800">
                 {member.name}
               </h3>
-              <p className="truncate text-sm text-gray-600">{member.role}</p>
+              <p className="truncate text-sm text-gray-400">{member.role}</p>
               <p className="mt-2 line-clamp-3 overflow-hidden text-ellipsis text-sm text-gray-500">
                 {member.about}
               </p>
