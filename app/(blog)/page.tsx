@@ -18,10 +18,10 @@ export default async function Page() {
   return (
     <div className="flex flex-col justify-center">
       <Hero />
-      <BuyNowButton url="https://www.ticketmaster.com/" label="Köp Biljett" />
+      <BuyNowButton url="https://www.ticketmaster.com/" label="BOKA BILJETT" />
+      <About aboutUsData={aboutUsData} />
       <Posts posts={posts} />
       <CastList cast={castData} />
-      <About aboutUsData={aboutUsData} />
       <FindUs />
     </div>
   );
