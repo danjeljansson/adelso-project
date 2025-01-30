@@ -5,7 +5,7 @@ import ListItems from "@/app/components/ListItems";
 
 const Header = () => {
   return (
-    <header className="bg-custom-green flex flex-col items-center justify-center">
+    <header className="flex flex-col items-center justify-center bg-transparent">
       <nav>
         <ul className="hidden flex-row items-center justify-center sm:flex">
           <ListItems />
