@@ -1,63 +1,42 @@
 export const castData = [
   {
-    name: "sussi person",
-    role: "Regissör",
+    name: "Petra Nielsen",
+    role: "Skådespelare",
     about:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunc. ut purus eget nunc lacinia aliquet. Nullam nec nunc nec nunclacinia aliquet. Nullam nec nunc nec nunc. ut purus eget",
-    imageUrl: "/images/cast/adam_wilson.jpeg",
+    imageUrl: "/images/cast/petra_nielsen.png",
   },
   {
-    name: "Adam Wilson Wallnäs",
-    role: "Rekvisitör",
+    name: "Niki Gunke Stangertz",
+    role: "Skådespelare",
     about: "Sussi is a seasoned actress ",
-    imageUrl: "/images/cast/ebba_irestad.jpg",
+    imageUrl: "/images/cast/niki_gunke.png",
   },
   {
-    name: "Östgötateatern",
-    role: "Kostym",
+    name: "Johan Charles",
+    role: "Skådepelare",
     about:
       "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/johan_charles.jpeg",
+    imageUrl: "/images/cast/johan_charles.png",
   },
   {
-    name: "Johanna Lysdahl",
-    role: "Maskdesign",
+    name: "Adam Wilson Wallnäs ",
+    role: "Skådespelare",
     about: "",
-    imageUrl: "/images/cast/niki_gunke.jpg",
+    imageUrl: "/images/cast/adam_wilson.png",
   },
   {
-    name: "Adelsö Friluftsteater",
-    role: "Producent",
+    name: "Ebba Irestad",
+    role: "Skådespelare",
     about:
       "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/petra_nielsen.jpg",
+    imageUrl: "/images/cast/ebba_irestad.png",
   },
   {
-    name: "Birkakören",
-    role: "Teknik",
+    name: "Sussi Persson",
+    role: "Skådespelare",
     about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
-  },
-  {
-    name: "Claes",
-    role: "Ljudtekniker",
-    about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
-  },
-  {
-    name: "Retuchering av affisch samt textlayout:",
-    role: "Jens Lennartsson",
-    about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
-  },
-  {
-    name: "Izabella Tancredi",
-    role: "Foto och film",
-    about:
-      "Sussi is a seasoned actress with a long career in theater and film.",
-    imageUrl: "/images/cast/sussi_larsson.jpg",
+      "Sussi is a seasoned actress with a long career in theater and film. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget  lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut purus eget. piscing elit. Sed ut purus eget. eben eben eben eben eben eben eben eben eben eben eben eben eben eben eben hej",
+    imageUrl: "/images/cast/sussi_larsson.png",
   },
 ];
