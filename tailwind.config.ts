@@ -13,6 +13,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "custom-green": "#5A8B59",
+        "pastel-green": "#d7f4d2",
       },
     },
   },
