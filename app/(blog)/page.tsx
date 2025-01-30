@@ -5,7 +5,6 @@ import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { castData } from "@/app/data/castData";
 import Hero from "@/app/components/Hero";
 import CastList from "@/app/components/Cast";
-import { aboutUsData } from "@/app/data/aboutUsData";
 import About from "@/app/components/About";
 import FindUs from "@/app/components/FindUs";
 import BuyNowButton from "@/app/components/BuyNow";
@@ -19,7 +18,7 @@ export default async function Page() {
     <div className="flex flex-col justify-center">
       <Hero />
       <BuyNowButton url="https://www.ticketmaster.com/" label="BOKA BILJETT" />
-      <About aboutUsData={aboutUsData} />
+      <About />
       <Posts posts={posts} />
       <CastList cast={castData} />
       <FindUs />
