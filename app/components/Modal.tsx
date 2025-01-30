@@ -36,9 +36,17 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [onClose]);
 
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  });
+
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       onClick={onClose}
     >
       <div
