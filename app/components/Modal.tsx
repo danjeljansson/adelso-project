@@ -51,7 +51,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-lg rounded-lg bg-white p-6 shadow-xl"
+        className="relative max-h-screen w-full max-w-lg overflow-y-auto rounded-lg bg-white p-6 shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <button
