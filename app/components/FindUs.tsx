@@ -31,7 +31,9 @@ const FindUs: React.FunctionComponent = () => {
 
   return (
     <section id="contact" className="mx-auto max-w-4xl p-6">
-      <h2 className="mb-6 text-center text-3xl font-bold">Hitta Oss</h2>
+      <h2 className="mb-6 text-center font-serif text-3xl font-bold">
+        Hitta Oss
+      </h2>
       <div className="flex flex-col gap-4 md:flex-row md:gap-6">
         <div className="flex-1">
           <div className="relative h-0 w-full pb-[75%]">
@@ -57,14 +59,14 @@ const FindUs: React.FunctionComponent = () => {
             Adelsö för att sedan promenera till Pannrummet (ca 10-15 min){" "}
             <strong>ELLER</strong> byt till buss 312 i Sjöängen, gå av vid
             hållplats Adelsö Gård och promenera därifrån till teatern.
-            <p>
-              Hela resvägen omfattas av Stockholms Lokaltrafik (SL). Bussarna
-              går minst en gång i timmen.
-            </p>
-            <p>
-              Gratis parkering finns på området, se till att vara på plats i god
-              tid...
-            </p>
+          </p>
+          <p>
+            Hela resvägen omfattas av Stockholms Lokaltrafik (SL). Bussarna går
+            minst en gång i timmen.
+          </p>
+          <p>
+            Gratis parkering finns på området, se till att vara på plats i god
+            tid...
           </p>
           <address>
             <br />
