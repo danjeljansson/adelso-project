@@ -59,7 +59,7 @@ const Hero = () => {
       </div>
 
       <nav
-        className={`fixed right-0 top-[45px] z-50 h-full w-2/4 transform bg-gray-950 opacity-95 shadow-lg transition-transform duration-300 ease-in-out sm:hidden ${
+        className={`fixed right-0 top-[30px] z-50 h-full w-2/4 transform bg-gray-950 opacity-95 shadow-lg transition-transform duration-300 ease-in-out sm:hidden ${
           burgerOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
