@@ -66,7 +66,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
               src={member.imageUrl}
               alt={member.name}
               fill={true}
-              className="sizes='(max-width: 640px) 128px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
+              className="sizes='(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
             />
           </div>
           <h3 className="text-2xl font-bold">{member.name}</h3>
