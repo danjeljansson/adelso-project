@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import ListItems from "@/app/components/ListItems";
 
 const Header = () => {
