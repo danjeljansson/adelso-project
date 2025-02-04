@@ -1,6 +1,10 @@
-import { POSTS_QUERYResult } from "@/sanity.types";
+import { sanityFetch } from "@sanity/lib/live";
+import { POSTS_QUERY } from "@sanity/lib/queries";
 
-export function Posts({ posts }: { posts: POSTS_QUERYResult }) {
+export async function Posts() {
+  const { data: posts } = await sanityFetch({
+    query: POSTS_QUERY,
+  });
   return (
     <ul className="container mx-auto grid grid-cols-1 divide-y divide-blue-100">
       {posts.map((post) => (
