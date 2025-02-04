@@ -15,15 +15,15 @@ const Hero = () => {
     <div className="relative flex w-full flex-col">
       <div className="relative h-[50vh] w-full sm:h-[60vh] lg:h-[80vh]">
         <Image
-          src={"/images/hero.png"}
-          alt="logo"
+          src={"/images/adelso-friluftsteater-hero.png"}
+          alt="hero med adelsö friluftsteater"
           fill={true}
           priority={true}
           className="object-cover"
         />
         <div className="absolute left-1/2 top-[15%] flex -translate-x-1/2 items-center gap-8 text-white md:top-[10%] lg:top-[5%]">
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/profile.php?id=61559283730056"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -32,7 +32,7 @@ const Hero = () => {
             <FaFacebook className="text-3xl sm:text-4xl lg:text-5xl" />
           </a>
           <a
-            href="https://www.tiktok.com"
+            href="https://www.tiktok.com/@adelsfriluftsteat"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
@@ -41,7 +41,7 @@ const Hero = () => {
             <AiFillTikTok className="text-3xl sm:text-4xl lg:text-5xl" />
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/adelsofriluftsteater"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
