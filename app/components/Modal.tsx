@@ -6,7 +6,7 @@ type ModalProps = {
     name: string;
     role: string;
     about: string;
-    imageUrl: string;
+    castImageUrl: string;
   };
   onClose: () => void;
 };
@@ -63,7 +63,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
         <div className="flex flex-col items-center">
           <div className="relative mb-4 h-32 w-32">
             <Image
-              src={member.imageUrl}
+              src={member.castImageUrl}
               alt={member.name}
               fill={true}
               className="sizes='(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
