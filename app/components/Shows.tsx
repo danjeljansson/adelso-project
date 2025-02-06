@@ -1,20 +1,27 @@
 import React from "react";
-import ShowComponent from "@/app/components/ShowComponent";
-import { sanityFetch } from "@sanity/lib/live";
-import { SHOWS_QUERY } from "@sanity/lib/queries";
+import Cast from "@/app/components/Cast";
+import Show from "@/app/components/Show";
+import { client } from "@sanity/lib/client";
+import { EVENT_QUERY } from "@sanity/lib/queries";
 
 const Shows = async () => {
-  const { data: shows } = await sanityFetch({
-    query: SHOWS_QUERY,
-  });
+  const eventData = await client.fetch(EVENT_QUERY);
 
+  if (!eventData) {
+    return (
+      <section className="my-12 text-center">
+        <p className="text-gold-600 text-lg">
+          No events found. Please check back later!
+        </p>
+      </section>
+    );
+  }
 
   return (
-    <>
-      {shows.map((show) => (
-        <ShowComponent key={show._id} show={show} />
-      ))}
-    </>
+    <div className="flex flex-col items-center">
+      <Show eventData={eventData} />
+      <Cast />
+    </div>
   );
 };
 
