@@ -4,8 +4,8 @@ import { blockContentType } from "./blockContentType";
 import { categoryType } from "./categoryType";
 import { postType } from "./postType";
 import { authorType } from "./authorType";
-import { showType } from "@sanity/schemaTypes/showType";
-import { castType } from "@sanity/schemaTypes/castType";
+import { eventType } from "./eventType";
+import { castType } from "./castType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -13,7 +13,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     categoryType,
     postType,
     authorType,
+    eventType,
     castType,
-    showType,
   ],
 };

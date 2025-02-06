@@ -1,43 +1,39 @@
-import { defineType } from "sanity";
-import { StarFilledIcon } from "@sanity/icons";
+import { DocumentTextIcon } from "@sanity/icons";
+import { defineType, defineField } from "sanity";
 
 export const castType = defineType({
   name: "cast",
-  title: "Cast",
-  icon: StarFilledIcon,
+  title: "Cast Member Post",
   type: "document",
+  icon: DocumentTextIcon,
   fields: [
-    {
+    defineField({
       name: "name",
+      title: "Name",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "role",
+      title: "Role",
       type: "string",
-    },
-    {
+    }),
+    defineField({
       name: "about",
+      title: "About",
       type: "text",
-    },
-    {
-      name: "imageUrl",
+    }),
+    defineField({
+      name: "image",
+      title: "Image",
       type: "image",
-      options: {
-        hotspot: true,
-      },
+      options: { hotspot: true },
       fields: [
         {
           name: "alt",
-          type: "string",
           title: "Alternative text",
+          type: "string",
         },
       ],
-    },
+    }),
   ],
-  preview: {
-    select: {
-      title: "name",
-      media: "imageUrl",
-    },
-  },
 });
