@@ -27,13 +27,13 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
 
 export default function HorizontalList({ onClick }: { onClick?: () => void }) {
   return (
-    <ul className="flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
+    <ul className="css:none flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
       <ListItem onClick={onClick} to="ticket">
         Boka Biljett
       </ListItem>
-      <ListItem onClick={onClick} to="intro">
-        Den inbillade sjuke
-      </ListItem>
+      {/*<ListItem onClick={onClick} to="intro">*/}
+      {/*  Den inbillade sjuke*/}
+      {/*</ListItem>*/}
       <ListItem onClick={onClick} to="ensemble">
         Ensemble
       </ListItem>
