@@ -16,14 +16,26 @@ export const POST_QUERY =
    _key, ...@->{_id, title, slug}
 }}`);
 
-export const SHOWS_QUERY = defineQuery(`*[_type == "show" 
-  && published == true
-  && defined(slug.current)][0...12]
-{
+export const EVENT_QUERY =
+  defineQuery(`*[_type == "event"] | order(publishedAt desc)[0]{
   _id,
+  _type,  
   title,
+  subheading,
   slug,
-  published,
+  "authorName": author->name,
   mainImage,
-  body,
+  publishedAt,
+  body
 }`);
+
+export const CAST_QUERY =
+  defineQuery(`*[_type == "cast"] | order(_createdAt desc) {
+    _id,
+    _type,
+    name,
+    role,
+    about,
+    "castImageUrl": image.asset->url
+  }
+`);

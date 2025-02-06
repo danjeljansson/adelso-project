@@ -68,94 +68,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Show = {
-  _id: string;
-  _type: "show";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  description?: string;
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  publishedAt?: string;
-  published?: boolean;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: "span";
-          _key: string;
-        }>;
-        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
-        listItem?: "bullet";
-        markDefs?: Array<{
-          href?: string;
-          _type: "link";
-          _key: string;
-        }>;
-        level?: number;
-        _type: "block";
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: "image";
-        _key: string;
-      }
-  >;
-  cast?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "cast";
-  }>;
-};
-
-export type Cast = {
-  _id: string;
-  _type: "cast";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  role?: string;
-  about?: string;
-  imageUrl?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-};
-
 export type Post = {
   _id: string;
   _type: "post";
@@ -182,6 +94,13 @@ export type Post = {
     alt?: string;
     _type: "image";
   };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   publishedAt?: string;
   body?: Array<
     | {
@@ -378,8 +297,6 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
-  | Show
-  | Cast
   | Post
   | Author
   | Category
@@ -457,25 +374,11 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
-// Variable: SHOWS_QUERY
-// Query: *[_type == "show"   && published == true  && defined(slug.current)][0...12]{  _id,  title,  slug,  published,  mainImage,  body,}
-export type SHOWS_QUERYResult = Array<{
+
+export type EVENT_QUERYResult = {
   _id: string;
+  _type: "post";
   title: string | null;
-  slug: Slug | null;
-  published: boolean | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
   body: Array<
     | {
         children?: Array<{
@@ -509,7 +412,25 @@ export type SHOWS_QUERYResult = Array<{
         _key: string;
       }
   > | null;
-}>;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  relatedPosts: Array<{
+    _key: string;
+    _id: string;
+    title: string | null;
+    slug: Slug | null;
+  }> | null;
+} | null;
 
 // Query TypeMap
 import "@sanity/client";
@@ -517,6 +438,5 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "post" && defined(slug.current)][0...12]{\n  _id, title, slug\n}': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]{\n   _id,\n  _type,\n  title,\n  body,\n  mainImage,\n  relatedPosts[]{\n   _key, ...@->{_id, title, slug}\n}}': POST_QUERYResult;
-    '*[_type == "show" \n  && published == true\n  && defined(slug.current)][0...12]\n{\n  _id,\n  title,\n  slug,\n  published,\n  mainImage,\n  body,\n}': SHOWS_QUERYResult;
-  }
-}
+    '*[_type == "event"] | order(publishedAt desc)[0]{\n  title, subheading, publishedAt, body\n}': EVENT_QUERYResult;
+  }};
