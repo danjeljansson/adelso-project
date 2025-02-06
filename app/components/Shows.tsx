@@ -1,10 +1,19 @@
 import React from "react";
-import Show from "@/app/components/Show";
+import ShowComponent from "@/app/components/ShowComponent";
+import { sanityFetch } from "@sanity/lib/live";
+import { SHOWS_QUERY } from "@sanity/lib/queries";
 
-const Shows = () => {
+const Shows = async () => {
+  const { data: shows } = await sanityFetch({
+    query: SHOWS_QUERY,
+  });
+
+
   return (
     <>
-      <Show />
+      {shows.map((show) => (
+        <ShowComponent key={show._id} show={show} />
+      ))}
     </>
   );
 };

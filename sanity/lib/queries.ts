@@ -15,3 +15,15 @@ export const POST_QUERY =
   relatedPosts[]{
    _key, ...@->{_id, title, slug}
 }}`);
+
+export const SHOWS_QUERY = defineQuery(`*[_type == "show" 
+  && published == true
+  && defined(slug.current)][0...12]
+{
+  _id,
+  title,
+  slug,
+  published,
+  mainImage,
+  body,
+}`);
