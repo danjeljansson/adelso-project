@@ -10,7 +10,7 @@ export default async function Page() {
   return (
     <div className="flex flex-col justify-center">
       <Hero />
-      <BuyNowButton url="https://www.ticketmaster.com/" label="BOKA BILJETT" />
+      <BuyNowButton url="https://www.kulturbiljetter.se" label="BOKA BILJETT" />
       <About />
       <Shows />
       <Posts />
