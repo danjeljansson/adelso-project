@@ -61,14 +61,16 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
           ✕
         </button>
         <div className="flex flex-col items-center">
-          <div className="relative mb-4 h-32 w-32">
-            <Image
-              src={member.castImageUrl}
-              alt={member.name}
-              fill={true}
-              className="sizes='(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
-            />
-          </div>
+          {member.castImageUrl && (
+            <div className="relative mb-4 h-32 w-32">
+              <Image
+                src={member.castImageUrl}
+                alt={member.name}
+                fill={true}
+                className="sizes='(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
+              />
+            </div>
+          )}
           <h3 className="text-2xl font-bold">{member.name}</h3>
           <p className="text-gray-600">{member.role}</p>
           <p className="mt-4 text-center text-gray-700">{member.about}</p>

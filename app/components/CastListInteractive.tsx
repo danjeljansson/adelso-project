@@ -21,15 +21,17 @@ const CastListInteractive: React.FC<CastListInteractiveProps> = ({ cast }) => {
             className="flex h-[300px] w-[220px] cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg bg-white p-2 shadow-md transition-shadow duration-300 hover:shadow-xl"
             onClick={() => setSelectedMember(member)}
           >
-            <div className="relative h-40 w-40">
-              <Image
-                src={member.castImageUrl}
-                alt={`Portrait of ${member.name} as ${member.role}`}
-                fill
-                sizes="(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw"
-                className="cursor-pointer rounded-t-lg object-cover object-[50%_40%] grayscale"
-              />
-            </div>
+            {member.castImageUrl && (
+              <div className="relative h-40 w-40">
+                <Image
+                  src={member.castImageUrl}
+                  alt={`Portrait of ${member.name} as ${member.role}`}
+                  fill
+                  sizes="(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw"
+                  className="cursor-pointer rounded-t-lg object-cover object-[50%_40%] grayscale"
+                />
+              </div>
+            )}
             <div className="flex h-full w-full flex-col p-4 text-center">
               <h3 className="truncate text-xl font-semibold text-gray-800">
                 {member.name}
