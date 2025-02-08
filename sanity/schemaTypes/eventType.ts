@@ -56,6 +56,11 @@ export const eventType = defineType({
       type: "blockContent",
     }),
     defineField({
+      name: "relatedCast",
+      type: "array",
+      of: [{ type: "reference", to: { type: "cast" } }],
+    }),
+    defineField({
       name: "relatedPosts",
       type: "array",
       of: [{ type: "reference", to: { type: "post" } }],
