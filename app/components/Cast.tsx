@@ -1,7 +1,7 @@
 import React from "react";
-import { client } from "@sanity/lib/client";
 import { CAST_QUERY } from "@sanity/lib/queries";
 import CastListInteractive from "@/app/components/CastListInteractive";
+import { sanityFetch } from "@sanity/lib/live";
 
 export type CastMember = {
   name: string;
@@ -12,7 +12,9 @@ export type CastMember = {
 
 const Cast = async () => {
   try {
-    const castData: CastMember[] = await client.fetch(CAST_QUERY);
+    const { data: castData } = await sanityFetch({
+      query: CAST_QUERY,
+    });
 
     if (!castData || castData.length === 0) {
       return (

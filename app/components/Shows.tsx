@@ -1,17 +1,17 @@
 import React from "react";
 import Cast from "@/app/components/Cast";
 import Show from "@/app/components/Show";
-import { client } from "@sanity/lib/client";
 import { EVENT_QUERY } from "@sanity/lib/queries";
+import { sanityFetch } from "@sanity/lib/live";
 
 const Shows = async () => {
-  const eventData = await client.fetch(EVENT_QUERY);
+  const { data: eventData } = await sanityFetch({ query: EVENT_QUERY });
 
   if (!eventData) {
     return (
       <section className="my-12 text-center">
         <p className="text-gold-600 text-lg">
-          No events found. Please check back later!
+          Mer om sommarens föreställning släpps inom kort!
         </p>
       </section>
     );
