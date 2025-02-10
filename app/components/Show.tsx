@@ -1,20 +1,18 @@
 import React from "react";
 import CastListInteractive from "@/app/components/CastListInteractive";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock } from "@portabletext/types";
+import { EVENT_QUERYResult } from "@/sanity.types";
 
-type EventData = {
-  title: string | null;
-  subheading: string | null;
-  publishedAt: string | null;
-  body: PortableTextBlock[];
-};
-
-type ShowProps = {
-  eventData: EventData;
-};
-
-const Show = ({ eventData }: ShowProps) => {
+const Show = ({ eventData }: { eventData: EVENT_QUERYResult }) => {
+  if (!eventData) {
+    return (
+      <section className="my-12 text-center">
+        <p className="text-gold-600 text-lg">
+          Mer om sommarens föreställning släpps inom kort!
+        </p>
+      </section>
+    );
+  }
   return (
     <>
       <section
@@ -28,7 +26,7 @@ const Show = ({ eventData }: ShowProps) => {
           {eventData.subheading}
         </h3>
         <div className="text-gold-600 leading-1.8 prose text-center text-lg">
-          <PortableText value={eventData.body} />
+          {eventData.body !== null && <PortableText value={eventData.body} />}
         </div>
       </section>
 
