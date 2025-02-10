@@ -41,9 +41,8 @@ export const CAST_QUERY =
   }
 `);
 
-export const BUTTON_QUERY = `
-  {
-    "event": *[_type == "event" && defined(title)][0].title,
-    "hasCast": count(*[_type == "cast"]) > 0
-  }
-`;
+export const BUTTON_QUERY =
+  defineQuery(`*[_type == "event" && defined(title)][0] {
+  "event": title,
+  "hasCast": count(*[_type == "cast"]) > 0
+  }`);

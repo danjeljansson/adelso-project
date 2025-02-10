@@ -3,16 +3,17 @@ import Image from "next/image";
 
 type ModalProps = {
   member: {
-    name: string;
-    role: string;
-    about: string;
-    castImageUrl: string;
+    name: string | null;
+    role: string | null;
+    about: string | null;
+    castImageUrl: string | null;
   };
   onClose: () => void;
 };
 
 const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
   const modalRef = React.useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -38,11 +39,10 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-
     return () => {
       document.body.style.overflow = "auto";
     };
-  });
+  }, []);
 
   return (
     <div
@@ -61,19 +61,26 @@ const Modal: React.FunctionComponent<ModalProps> = ({ member, onClose }) => {
           ✕
         </button>
         <div className="flex flex-col items-center">
-          {member.castImageUrl && (
+          {member.castImageUrl ? (
             <div className="relative mb-4 h-32 w-32">
               <Image
                 src={member.castImageUrl}
-                alt={member.name}
+                alt={member.name ?? ""}
                 fill={true}
-                className="sizes='(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw' rounded-full object-cover grayscale"
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 160px, 40vw"
+                className="rounded-full object-cover grayscale"
               />
             </div>
+          ) : (
+            <div className="mb-4 h-32 w-32 rounded-full bg-gray-200"></div>
           )}
-          <h3 className="text-2xl font-bold">{member.name}</h3>
-          <p className="text-gray-600">{member.role}</p>
-          <p className="mt-4 text-center text-gray-700">{member.about}</p>
+          <h3 className="text-2xl font-bold">
+            {member.name ?? "Unknown Name"}
+          </h3>
+          <p className="text-gray-600">{member.role ?? ""}</p>
+          <p className="mt-4 text-center text-gray-700">
+            {member.about ?? "No additional information available."}
+          </p>
         </div>
       </div>
     </div>

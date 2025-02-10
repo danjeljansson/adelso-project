@@ -4,9 +4,9 @@ import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
 
 type EventData = {
-  title: string;
-  subheading: string;
-  publishedAt: string;
+  title: string | null;
+  subheading: string | null;
+  publishedAt: string | null;
   body: PortableTextBlock[];
 };
 

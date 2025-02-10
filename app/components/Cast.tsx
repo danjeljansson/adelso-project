@@ -4,10 +4,10 @@ import CastListInteractive from "@/app/components/CastListInteractive";
 import { sanityFetch } from "@sanity/lib/live";
 
 export type CastMember = {
-  name: string;
-  role: string;
-  about: string;
-  castImageUrl: string;
+  name: string | null;
+  role: string | null;
+  about: string | null;
+  castImageUrl: string | null;
 };
 
 const Cast = async () => {
