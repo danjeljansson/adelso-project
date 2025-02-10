@@ -68,6 +68,113 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Cast = {
+  _id: string;
+  _type: "cast";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  role?: string;
+  about?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+};
+
+export type Event = {
+  _id: string;
+  _type: "event";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  subheading?: string;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  relatedCast?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "cast";
+  }>;
+  relatedPosts?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "post";
+  }>;
+};
+
 export type Post = {
   _id: string;
   _type: "post";
@@ -297,6 +404,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Cast
+  | Event
   | Post
   | Author
   | Category
@@ -374,11 +483,28 @@ export type POST_QUERYResult = {
     slug: Slug | null;
   }> | null;
 } | null;
-
+// Variable: EVENT_QUERY
+// Query: *[_type == "event"] | order(publishedAt desc)[0]{  _id,  _type,    title,  subheading,  slug,  "authorName": author->name,  mainImage,  publishedAt,  body,  cast ->}
 export type EVENT_QUERYResult = {
   _id: string;
-  _type: "post";
+  _type: "event";
   title: string | null;
+  subheading: string | null;
+  slug: Slug | null;
+  authorName: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  publishedAt: string | null;
   body: Array<
     | {
         children?: Array<{
@@ -412,24 +538,23 @@ export type EVENT_QUERYResult = {
         _key: string;
       }
   > | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
-  relatedPosts: Array<{
-    _key: string;
-    _id: string;
-    title: string | null;
-    slug: Slug | null;
-  }> | null;
+  cast: null;
+} | null;
+// Variable: CAST_QUERY
+// Query: *[_type == "cast"] | order(_createdAt desc) {    _id,    _type,    name,    role,    about,    "castImageUrl": image.asset->url  }
+export type CAST_QUERYResult = Array<{
+  _id: string;
+  _type: "cast";
+  name: string | null;
+  role: string | null;
+  about: string | null;
+  castImageUrl: string | null;
+}>;
+// Variable: BUTTON_QUERY
+// Query: *[_type == "event" && defined(title)][0] {  "event": title,  "hasCast": count(*[_type == "cast"]) > 0  }
+export type BUTTON_QUERYResult = {
+  event: string | null;
+  hasCast: boolean;
 } | null;
 
 // Query TypeMap
@@ -438,5 +563,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "post" && defined(slug.current)][0...12]{\n  _id, title, slug\n}': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]{\n   _id,\n  _type,\n  title,\n  body,\n  mainImage,\n  relatedPosts[]{\n   _key, ...@->{_id, title, slug}\n}}': POST_QUERYResult;
-    '*[_type == "event"] | order(publishedAt desc)[0]{\n  title, subheading, publishedAt, body\n}': EVENT_QUERYResult;
-  }};
+    '*[_type == "event"] | order(publishedAt desc)[0]{\n  _id,\n  _type,  \n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  mainImage,\n  publishedAt,\n  body,\n  cast ->\n}': EVENT_QUERYResult;
+    '*[_type == "cast"] | order(_createdAt desc) {\n    _id,\n    _type,\n    name,\n    role,\n    about,\n    "castImageUrl": image.asset->url\n  }\n': CAST_QUERYResult;
+    '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0\n  }': BUTTON_QUERYResult;
+  }
+}

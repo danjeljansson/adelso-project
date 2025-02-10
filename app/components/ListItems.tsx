@@ -2,10 +2,10 @@
 
 import { Link } from "react-scroll";
 import React from "react";
-import DynamicButtons from "@/app/components/ButtonFetch";
 
 type ButtonData = {
-  title: string;
+  title?: string;
+  hasCast?: boolean;
 };
 
 type ListItemProps = {
@@ -34,17 +34,29 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
 
 export default function HorizontalList({
   onClick,
-  eventData,
+  buttonData,
 }: {
   onClick?: () => void;
   buttonData?: ButtonData;
-  eventData?: { title: string; hasCast: boolean };
 }) {
+
   return (
     <ul className="css:none flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
       <ListItem onClick={onClick} to="ticket">
         Boka Biljett
       </ListItem>
+
+      {buttonData && (
+        <ListItem onClick={onClick} to="event">
+          {buttonData.title}
+        </ListItem>
+      )}
+
+      {buttonData?.hasCast && (
+        <ListItem onClick={onClick} to="cast">
+          Visa Cast
+        </ListItem>
+      )}
 
       <ListItem onClick={onClick} to="intro">
         Om Oss

@@ -8,7 +8,11 @@ import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 
-const Hero = ({ buttonData }: { buttonData?: { title: string } }) => {
+const Hero = ({
+  buttonData,
+}: {
+  buttonData: { title?: string; hasCast?: boolean };
+}) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
 
   return (
@@ -52,10 +56,12 @@ const Hero = ({ buttonData }: { buttonData?: { title: string } }) => {
         </div>
       </div>
 
-      <BurgerMenu />
+      <BurgerMenu burgerOpen={burgerOpen} setBurgerOpen={setBurgerOpen} />
 
       <div className="relative hidden w-full bg-custom-green py-4 sm:block">
-        <Header />
+        <Header
+          buttonData={buttonData}
+        />
       </div>
 
       <nav
