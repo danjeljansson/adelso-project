@@ -1,5 +1,12 @@
+"use client";
+
 import { Link } from "react-scroll";
 import React from "react";
+import DynamicButtons from "@/app/components/ButtonFetch";
+
+type ButtonData = {
+  title: string;
+};
 
 type ListItemProps = {
   children: React.ReactNode;
@@ -25,18 +32,28 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
   </li>
 );
 
-export default function HorizontalList({ onClick }: { onClick?: () => void }) {
+export default function HorizontalList({
+  onClick,
+  eventData,
+}: {
+  onClick?: () => void;
+  buttonData?: ButtonData;
+  eventData?: { title: string; hasCast: boolean };
+}) {
   return (
     <ul className="css:none flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
       <ListItem onClick={onClick} to="ticket">
         Boka Biljett
       </ListItem>
-      {/*<ListItem onClick={onClick} to="intro">*/}
-      {/*  Den inbillade sjuke*/}
-      {/*</ListItem>*/}
+
+      <ListItem onClick={onClick} to="intro">
+        Om Oss
+      </ListItem>
+
       <ListItem onClick={onClick} to="ensemble">
         Ensemble
       </ListItem>
+
       <ListItem onClick={onClick} to="contact">
         Hitta Hit
       </ListItem>

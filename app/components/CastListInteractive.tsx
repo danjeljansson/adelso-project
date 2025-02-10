@@ -17,6 +17,7 @@ const CastListInteractive: React.FC<CastListInteractiveProps> = ({ cast }) => {
       <ul className="mx-auto grid w-full max-w-5xl grid-cols-1 justify-items-center gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:gap-3">
         {cast.map((member) => (
           <li
+            id="ensemble"
             key={member.name}
             className="flex h-[300px] w-[220px] cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg bg-white p-2 shadow-md transition-shadow duration-300 hover:shadow-xl"
             onClick={() => setSelectedMember(member)}

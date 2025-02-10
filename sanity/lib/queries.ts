@@ -26,7 +26,8 @@ export const EVENT_QUERY =
   "authorName": author->name,
   mainImage,
   publishedAt,
-  body
+  body,
+  cast ->
 }`);
 
 export const CAST_QUERY =
@@ -39,3 +40,10 @@ export const CAST_QUERY =
     "castImageUrl": image.asset->url
   }
 `);
+
+export const BUTTON_QUERY = `
+  {
+    "event": *[_type == "event" && defined(title)][0].title,
+    "hasCast": count(*[_type == "cast"]) > 0
+  }
+`;

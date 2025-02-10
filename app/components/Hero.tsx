@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Header from "@/app/components/Header";
 import BurgerMenu from "@/app/components/BurgerMenu";
 import HorizontalList from "@/app/components/ListItems";
@@ -8,8 +8,8 @@ import { FaInstagram, FaFacebook } from "react-icons/fa";
 import { AiFillTikTok } from "react-icons/ai";
 import Image from "next/image";
 
-const Hero = () => {
-  const [burgerOpen, setBurgerOpen] = React.useState(false);
+const Hero = ({ buttonData }: { buttonData?: { title: string } }) => {
+  const [burgerOpen, setBurgerOpen] = useState(false);
 
   return (
     <div className="relative flex w-full flex-col">
@@ -52,9 +52,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <BurgerMenu burgerOpen={burgerOpen} setBurgerOpen={setBurgerOpen} />
+      <BurgerMenu />
 
-      <div className="bg-custom-green relative hidden w-full py-4 sm:block">
+      <div className="relative hidden w-full bg-custom-green py-4 sm:block">
         <Header />
       </div>
 
@@ -64,7 +64,10 @@ const Hero = () => {
         }`}
       >
         <ul className="flex flex-col gap-12 p-2">
-          <HorizontalList onClick={() => setBurgerOpen(false)} />
+          <HorizontalList
+            buttonData={buttonData} // Pass the fetched data as props
+            onClick={() => setBurgerOpen(false)}
+          />
         </ul>
       </nav>
     </div>
