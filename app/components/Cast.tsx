@@ -17,11 +17,7 @@ const Cast = async () => {
     });
 
     if (!castData || castData.length === 0) {
-      return (
-        <p className="text-center text-gray-500">
-          No cast members found. Please check back later!
-        </p>
-      );
+      return null;
     }
 
     return <CastListInteractive cast={castData} />;

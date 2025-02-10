@@ -41,9 +41,9 @@ export default function HorizontalList({
 }) {
   return (
     <ul className="css:none flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
-      <ListItem onClick={onClick} to="ticket">
-        Boka Biljett
-      </ListItem>
+      {/*<ListItem onClick={onClick} to="ticket">*/}
+      {/*  Boka Biljett*/}
+      {/*</ListItem>*/}
 
       {buttonData?.title && (
         <ListItem onClick={onClick} to="intro">
