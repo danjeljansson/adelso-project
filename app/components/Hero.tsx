@@ -52,7 +52,7 @@ const Hero = ({ buttonData }: { buttonData?: { title: string } }) => {
         </div>
       </div>
 
-      <BurgerMenu />
+      <BurgerMenu setBurgerOpen={setBurgerOpen} burgerOpen={burgerOpen} />
 
       <div className="relative hidden w-full bg-custom-green py-4 sm:block">
         <Header />
