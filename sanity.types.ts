@@ -92,13 +92,13 @@ export type Cast = {
 };
 
 export type Event = {
-  _id: string | null;
+  _id: string;
   _type: "event";
-  _createdAt: string | null;
-  _updatedAt: string | null;
+  _createdAt: string;
+  _updatedAt: string;
   _rev: string;
-  title: string | null;
-  subheading: string | null;
+  title?: string;
+  subheading?: string;
   slug?: Slug;
   author?: {
     _ref: string;
