@@ -7,7 +7,7 @@ const Show = ({ eventData }: { eventData: EVENT_QUERYResult }) => {
   if (!eventData) {
     return (
       <section className="my-12 text-center">
-        <p className="text-gold-600 text-lg">
+        <p className="md:text-left">
           Mer om sommarens föreställning släpps inom kort!
         </p>
       </section>
