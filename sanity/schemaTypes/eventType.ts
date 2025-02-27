@@ -10,15 +10,18 @@ export const eventType = defineType({
     defineField({
       name: "title",
       type: "string",
+      description: "Rubrik",
     }),
     defineField({
       name: "subheading",
       title: "Sub Heading",
       type: "string",
+      description: "Underrubrik",
     }),
     defineField({
       name: "slug",
       type: "slug",
+      description: "URL-slug",
       options: {
         source: "title",
       },
@@ -26,51 +29,35 @@ export const eventType = defineType({
     defineField({
       name: "author",
       type: "reference",
+      description: "Välj ditt namn i listan",
       to: { type: "author" },
-    }),
-    defineField({
-      name: "mainImage",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-        },
-      ],
-    }),
-    defineField({
-      name: "categories",
-      type: "array",
-      of: [defineArrayMember({ type: "reference", to: { type: "category" } })],
     }),
     defineField({
       name: "publishedAt",
       type: "datetime",
+      description: "Publiceringsdatum",
+    }),
+    defineField({
+      name: "ticketUrl",
+      title: "Ticket Purchase URL",
+      type: "url",
+      description: "Länk till biljettköp",
     }),
     defineField({
       name: "body",
       type: "blockContent",
+      description: "Innehåll",
     }),
     defineField({
       name: "relatedCast",
       type: "array",
       of: [{ type: "reference", to: { type: "cast" } }],
     }),
-    defineField({
-      name: "relatedPosts",
-      type: "array",
-      of: [{ type: "reference", to: { type: "post" } }],
-    }),
   ],
   preview: {
     select: {
       title: "title",
       author: "author.name",
-      media: "mainImage",
     },
     prepare(selection) {
       const { author } = selection;

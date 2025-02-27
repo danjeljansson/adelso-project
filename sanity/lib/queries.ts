@@ -41,8 +41,19 @@ export const CAST_QUERY =
   }
 `);
 
+export const CREW_QUERY = `*[_type == "crew"] {
+  _id,
+  title,
+  subheading,
+  slug,
+  "authorName": author->name,
+  publishedAt,
+  body
+}`;
+
 export const BUTTON_QUERY =
   defineQuery(`*[_type == "event" && defined(title)][0] {
   "event": title,
-  "hasCast": count(*[_type == "cast"]) > 0
+  "hasCast": count(*[_type == "cast"]) > 0,
+  ticketUrl
   }`);
