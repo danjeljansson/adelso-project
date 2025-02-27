@@ -68,6 +68,71 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type CREW_QUERYResult = {
+  _id: string;
+  _type: "crew";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  subheading?: string;
+  slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "author";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: "image";
+        _key: string;
+      }
+  >;
+  relatedPosts?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "post";
+  }>;
+};
+
 export type Cast = {
   _id: string;
   _type: "cast";
@@ -404,6 +469,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | CREW_QUERYResult
   | Cast
   | Event
   | Post
@@ -565,6 +631,7 @@ declare module "@sanity/client" {
     '*[_type == "post" && slug.current == $slug][0]{\n   _id,\n  _type,\n  title,\n  body,\n  mainImage,\n  relatedPosts[]{\n   _key, ...@->{_id, title, slug}\n}}': POST_QUERYResult;
     '*[_type == "event"] | order(publishedAt desc)[0]{\n  _id,\n  _type,  \n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  mainImage,\n  publishedAt,\n  body,\n  cast ->\n}': EVENT_QUERYResult;
     '*[_type == "cast"] | order(_createdAt desc) {\n    _id,\n    _type,\n    name,\n    role,\n    about,\n    "castImageUrl": image.asset->url\n  }\n': CAST_QUERYResult;
+    '*[_type == "crew"] | order(publishedAt desc)[0]{\n  _id,\n  _type,\n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  publishedAt,\n  body\n}': CREW_QUERYResult;
     '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0\n  }': BUTTON_QUERYResult;
   }
 }
