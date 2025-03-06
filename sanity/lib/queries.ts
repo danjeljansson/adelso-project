@@ -51,6 +51,17 @@ export const CREW_QUERY = `*[_type == "crew"] {
   body
 }`;
 
+export const SPONSOR_QUERY = `*[_type == "sponsor"][] {
+  _id,
+  title,
+  url,
+  sponsors[]{
+    name,
+    url,
+    "imageUrl": asset->url
+  }
+}`;
+
 export const BUTTON_QUERY =
   defineQuery(`*[_type == "event" && defined(title)][0] {
   "event": title,

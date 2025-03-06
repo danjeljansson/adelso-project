@@ -5,11 +5,13 @@ import About from "@/app/components/About";
 import FindUs from "@/app/components/FindUs";
 import BuyNowButton from "@/app/components/BuyNow";
 import Shows from "@/app/components/Shows";
+import Sponsors from "@/app/components/Sponsors";
 import { sanityFetch } from "@sanity/lib/live";
-import { BUTTON_QUERY } from "@sanity/lib/queries";
+import { BUTTON_QUERY, SPONSOR_QUERY } from "@sanity/lib/queries";
 
 export default async function Page() {
   const { data: buttonData } = await sanityFetch({ query: BUTTON_QUERY });
+  const { data: sponsorData } = await sanityFetch({ query: SPONSOR_QUERY });
   return (
     <div className="flex flex-col justify-center">
       <Hero
@@ -25,6 +27,7 @@ export default async function Page() {
 
       <About />
       <Shows />
+      <Sponsors sponsorData={sponsorData} />
       <Posts />
       <FindUs />
     </div>
