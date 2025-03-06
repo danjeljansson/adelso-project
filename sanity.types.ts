@@ -68,7 +68,31 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type CREW_QUERYResult = {
+export type Sponsor = {
+  _id: string;
+  _type: "sponsor";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  url?: string;
+  sponsors?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    name?: string;
+    url?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
+export type Crew = {
   _id: string;
   _type: "crew";
   _createdAt: string;
@@ -83,13 +107,6 @@ export type CREW_QUERYResult = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
   };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
   publishedAt?: string;
   body?: Array<
     | {
@@ -124,14 +141,8 @@ export type CREW_QUERYResult = {
         _key: string;
       }
   >;
-  relatedPosts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
-  }>;
 };
+export type CREW_QUERYResult = Crew;
 
 export type Cast = {
   _id: string;
@@ -171,26 +182,8 @@ export type Event = {
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "author";
   };
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
   publishedAt?: string;
+  ticketUrl?: string;
   body?: Array<
     | {
         children?: Array<{
@@ -230,13 +223,6 @@ export type Event = {
     _weak?: boolean;
     _key: string;
     [internalGroqTypeReferenceTo]?: "cast";
-  }>;
-  relatedPosts?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "post";
   }>;
 };
 
@@ -469,7 +455,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
-  | CREW_QUERYResult
+  | Sponsor
+  | Crew
   | Cast
   | Event
   | Post
@@ -558,18 +545,7 @@ export type EVENT_QUERYResult = {
   subheading: string | null;
   slug: Slug | null;
   authorName: string | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
+  mainImage: null;
   publishedAt: string | null;
   body: Array<
     | {
@@ -617,10 +593,11 @@ export type CAST_QUERYResult = Array<{
   castImageUrl: string | null;
 }>;
 // Variable: BUTTON_QUERY
-// Query: *[_type == "event" && defined(title)][0] {  "event": title,  "hasCast": count(*[_type == "cast"]) > 0  }
+// Query: *[_type == "event" && defined(title)][0] {  "event": title,  "hasCast": count(*[_type == "cast"]) > 0,  ticketUrl  }
 export type BUTTON_QUERYResult = {
   event: string | null;
   hasCast: boolean;
+  ticketUrl: string | null;
 } | null;
 
 // Query TypeMap
@@ -631,7 +608,6 @@ declare module "@sanity/client" {
     '*[_type == "post" && slug.current == $slug][0]{\n   _id,\n  _type,\n  title,\n  body,\n  mainImage,\n  relatedPosts[]{\n   _key, ...@->{_id, title, slug}\n}}': POST_QUERYResult;
     '*[_type == "event"] | order(publishedAt desc)[0]{\n  _id,\n  _type,  \n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  mainImage,\n  publishedAt,\n  body,\n  cast ->\n}': EVENT_QUERYResult;
     '*[_type == "cast"] | order(_createdAt desc) {\n    _id,\n    _type,\n    name,\n    role,\n    about,\n    "castImageUrl": image.asset->url\n  }\n': CAST_QUERYResult;
-    '*[_type == "crew"] | order(publishedAt desc)[0]{\n  _id,\n  _type,\n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  publishedAt,\n  body\n}': CREW_QUERYResult;
-    '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0\n  }': BUTTON_QUERYResult;
+    '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0,\n  ticketUrl\n  }': BUTTON_QUERYResult;
   }
 }
