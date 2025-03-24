@@ -13,6 +13,7 @@ const Show = ({ eventData }: { eventData: EVENT_QUERYResult }) => {
       </section>
     );
   }
+
   return (
     <>
       <section
