@@ -17,18 +17,19 @@ export const POST_QUERY =
 }}`);
 
 export const EVENT_QUERY =
-  defineQuery(`*[_type == "event"] | order(publishedAt desc)[0]{
-  _id,
-  _type,  
-  title,
-  subheading,
-  slug,
-  "authorName": author->name,
-  mainImage,
-  publishedAt,
-  body,
-  cast ->
-}`);
+  defineQuery(`*[_type == "event" && defined(publishedAt) && publishedAt <= now()] 
+  | order(publishedAt desc)[0] {
+    _id,
+    _type,
+    title,
+    subheading,
+    slug,
+    "authorName": author->name,
+    mainImage,
+    publishedAt,
+    body,
+    cast ->
+  }`);
 
 export const CAST_QUERY =
   defineQuery(`*[_type == "cast"] | order(_createdAt desc) {
@@ -49,6 +50,13 @@ export const CREW_QUERY = `*[_type == "crew"] {
   "authorName": author->name,
   publishedAt,
   body
+}`;
+
+export const POSTER_QUERY = `*[_type == "poster"] | order(_createdAt desc)[0] {
+  _id,
+  "posterUrl": image.asset->url,
+  "altText": image.alt,
+  ticketUrl
 }`;
 
 export const SPONSOR_QUERY = `*[_type == "sponsor"][] {
