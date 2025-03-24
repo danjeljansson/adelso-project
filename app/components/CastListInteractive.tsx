@@ -29,7 +29,7 @@ const CastListInteractive: React.FC<CastListInteractiveProps> = ({ cast }) => {
                   alt={`Portrait of ${member.name} as ${member.role}`}
                   fill
                   sizes="(max-width: 640px) 224px, (max-width: 768px) 224px, 50vw"
-                  className="cursor-pointer rounded-lg object-cover object-[50%_40%] grayscale"
+                  className="cursor-pointer rounded-lg object-cover object-[50%_40%]"
                 />
               </div>
             )}
