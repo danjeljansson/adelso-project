@@ -32,7 +32,7 @@ const FindUs: React.FunctionComponent = () => {
   return (
     <section id="contact" className="mx-auto max-w-4xl p-6">
       <h2 className="mb-6 text-center font-serif text-3xl font-bold">
-        Hitta Oss
+        Hitta hit
       </h2>
       <div className="flex flex-col gap-4 md:flex-row md:gap-6">
         <div className="flex-1">
@@ -53,20 +53,18 @@ const FindUs: React.FunctionComponent = () => {
           </div>
         </div>
         <div className="flex-1 flex-wrap text-center md:text-left">
-          <strong>Från Brommaplan</strong>
           <p>
-            Ta buss 311 till Sjöängen, gå av och ta en gratis färja över till
-            Adelsö för att sedan promenera till Pannrummet (ca 10-15 min){" "}
-            <strong>ELLER</strong> byt till buss 312 i Sjöängen, gå av vid
-            hållplats Adelsö Gård och promenera därifrån till teatern.
+            <strong>Åka kollektivt från Brommaplan (ca 50 min)</strong><br/>
+            Ta buss 311 till Sjöängen, gå på färjan över till Adelsö för att sedan promenera till Pannrummet (ca 10 min), {" "}
+            <strong>ELLER</strong> byt till buss 312 i Sjöängen, gå av vid hållplats Adelsö Gård och promenera därifrån till teatern (3 min).
           </p>
+          <br/>
           <p>
-            Hela resvägen omfattas av Stockholms Lokaltrafik (SL). Bussarna går
-            minst en gång i timmen.
+            Hela resvägen omfattas av Stockholms Lokaltrafik (SL). Bussarna går minst en gång i timmen.
           </p>
+          <br />
           <p>
-            Gratis parkering finns på området, se till att vara på plats i god
-            tid...
+            Gratis parkering finns på området, se till att vara på plats i god tid.
           </p>
           <address>
             <br />
