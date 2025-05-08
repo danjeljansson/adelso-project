@@ -1,5 +1,5 @@
 import { ImageIcon } from "@sanity/icons";
-import { defineType, defineField } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const posterType = defineType({
   name: "poster",
@@ -18,7 +18,7 @@ export const posterType = defineType({
           name: "alt",
           title: "Alternative text",
           type: "string",
-          description: "Describe the post for SEO",
+          description: "Beskriv inlägget för SEO",
         },
       ],
     }),

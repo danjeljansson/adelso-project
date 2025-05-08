@@ -3,8 +3,9 @@ import Image from "next/image";
 
 type Sponsor = {
   name: string;
-  url?: string;
+  url: string;
   imageUrl: string;
+  alt: string;
 };
 
 type SponsorDocument = {
@@ -44,7 +45,7 @@ const Sponsors: React.FunctionComponent<SponsorsProps> = ({ sponsorData }) => {
           >
             <Image
               src={sponsor.imageUrl}
-              alt={sponsor.name}
+              alt={sponsor.alt || sponsor.name}
               width={200}
               height={200}
               className="object-contain"

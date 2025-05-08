@@ -9,15 +9,9 @@ export const sponsorType = defineType({
   fields: [
     defineField({
       name: "title",
-      title: "Name",
+      title: "Namn",
       type: "string",
-      description: "Sponsor Namn (syns ej på sidan)",
-    }),
-    defineField({
-      name: "url",
-      title: "URL",
-      type: "url",
-      description: "URL",
+      description: "Namn på inlägg (syns ej på sidan)",
     }),
     defineField({
       name: "sponsors",
@@ -31,15 +25,21 @@ export const sponsorType = defineType({
           fields: [
             {
               name: "name",
-              title: "Name",
+              title: "Namn",
               type: "string",
               description: "Sponsorens namn",
             },
             {
               name: "url",
-              title: "Website URL",
+              title: "URL",
               type: "url",
               description: "Webbadress till sponsorns hemsida",
+            },
+            {
+              name: "alt",
+              title: "Alternativ text",
+              type: "string",
+              description: "Beskriv inlägget för tillgänglighet och SEO",
             },
           ],
         },
