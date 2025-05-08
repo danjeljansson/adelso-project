@@ -9,6 +9,7 @@ import { castType } from "./castType";
 import { crewType } from "./crewType";
 import { sponsorType } from "./sponsorType";
 import { posterType } from "@sanity/schemaTypes/posterType";
+import { articleType } from "./articleType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -21,5 +22,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     crewType,
     sponsorType,
     posterType,
+    articleType,
   ],
 };

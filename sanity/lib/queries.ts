@@ -59,6 +59,17 @@ export const POSTER_QUERY = `*[_type == "poster"] | order(_createdAt desc)[0] {
   ticketUrl
 }`;
 
+export const ARTICLE_QUERY = `*[_type == "article"][] {
+  _id,
+  title,                 
+ articles[] {
+  name,
+  "articleUrl": url,
+  "imageUrl": asset->url,
+  "alt": alt
+  }
+}`;
+
 export const SPONSOR_QUERY = `*[_type == "sponsor"][] {
   _id,
   title,
@@ -66,7 +77,8 @@ export const SPONSOR_QUERY = `*[_type == "sponsor"][] {
   sponsors[]{
     name,
     url,
-    "imageUrl": asset->url
+    "imageUrl": asset->url,
+    "alt": alt
   }
 }`;
 

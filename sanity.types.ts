@@ -68,6 +68,52 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Article = {
+  _id: string;
+  _type: "article";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  url?: string;
+  articles?: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    name?: string;
+    url?: string;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+};
+
+export type Poster = {
+  _id: string;
+  _type: "poster";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  ticketUrl?: string;
+};
+
 export type Sponsor = {
   _id: string;
   _type: "sponsor";
@@ -87,6 +133,7 @@ export type Sponsor = {
     crop?: SanityImageCrop;
     name?: string;
     url?: string;
+    alt?: string;
     _type: "image";
     _key: string;
   }>;
@@ -142,7 +189,6 @@ export type Crew = {
       }
   >;
 };
-export type CREW_QUERYResult = Crew;
 
 export type Cast = {
   _id: string;
@@ -225,6 +271,8 @@ export type Event = {
     [internalGroqTypeReferenceTo]?: "cast";
   }>;
 };
+
+export type CREW_QUERYResult = Crew;
 
 export type Post = {
   _id: string;
@@ -455,6 +503,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Article
+  | Poster
   | Sponsor
   | Crew
   | Cast
@@ -537,7 +587,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: EVENT_QUERY
-// Query: *[_type == "event"] | order(publishedAt desc)[0]{  _id,  _type,    title,  subheading,  slug,  "authorName": author->name,  mainImage,  publishedAt,  body,  cast ->}
+// Query: *[_type == "event" && defined(publishedAt) && publishedAt <= now()]   | order(publishedAt desc)[0] {    _id,    _type,    title,    subheading,    slug,    "authorName": author->name,    mainImage,    publishedAt,    body,    cast ->  }
 export type EVENT_QUERYResult = {
   _id: string;
   _type: "event";
@@ -606,7 +656,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "post" && defined(slug.current)][0...12]{\n  _id, title, slug\n}': POSTS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]{\n   _id,\n  _type,\n  title,\n  body,\n  mainImage,\n  relatedPosts[]{\n   _key, ...@->{_id, title, slug}\n}}': POST_QUERYResult;
-    '*[_type == "event"] | order(publishedAt desc)[0]{\n  _id,\n  _type,  \n  title,\n  subheading,\n  slug,\n  "authorName": author->name,\n  mainImage,\n  publishedAt,\n  body,\n  cast ->\n}': EVENT_QUERYResult;
+    '*[_type == "event" && defined(publishedAt) && publishedAt <= now()] \n  | order(publishedAt desc)[0] {\n    _id,\n    _type,\n    title,\n    subheading,\n    slug,\n    "authorName": author->name,\n    mainImage,\n    publishedAt,\n    body,\n    cast ->\n  }': EVENT_QUERYResult;
     '*[_type == "cast"] | order(_createdAt desc) {\n    _id,\n    _type,\n    name,\n    role,\n    about,\n    "castImageUrl": image.asset->url\n  }\n': CAST_QUERYResult;
     '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0,\n  ticketUrl\n  }': BUTTON_QUERYResult;
   }

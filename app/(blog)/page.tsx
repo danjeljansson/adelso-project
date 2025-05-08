@@ -7,13 +7,20 @@ import FindUs from "@/app/components/FindUs";
 import BuyNowButton from "@/app/components/BuyNow";
 import Shows from "@/app/components/Shows";
 import Sponsors from "@/app/components/Sponsors";
+import Article from "@/app/components/Article";
 import { sanityFetch } from "@sanity/lib/live";
-import { BUTTON_QUERY, POSTER_QUERY, SPONSOR_QUERY } from "@sanity/lib/queries";
+import {
+  BUTTON_QUERY,
+  POSTER_QUERY,
+  SPONSOR_QUERY,
+  ARTICLE_QUERY,
+} from "@sanity/lib/queries";
 
 export default async function Page() {
   const { data: buttonData } = await sanityFetch({ query: BUTTON_QUERY });
   const { data: sponsorData } = await sanityFetch({ query: SPONSOR_QUERY });
   const { data: posterData } = await sanityFetch({ query: POSTER_QUERY });
+  const { data: articleData } = await sanityFetch({ query: ARTICLE_QUERY });
 
   return (
     <div className="flex flex-col justify-center">
@@ -33,6 +40,7 @@ export default async function Page() {
       <About />
       <Shows />
       <Sponsors sponsorData={sponsorData} />
+      <Article articleData={articleData} />
       <Posts />
       <FindUs />
     </div>
