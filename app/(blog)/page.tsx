@@ -1,5 +1,5 @@
 import React from "react";
-import { Posts } from "@/app/components/Posts";
+import Posts from "@/app/components/Posts";
 import Hero from "@/app/components/Hero";
 import About from "@/app/components/About";
 import Poster from "@/app/components/Poster";
@@ -8,16 +8,15 @@ import BuyNowButton from "@/app/components/BuyNow";
 import Shows from "@/app/components/Shows";
 import Sponsors from "@/app/components/Sponsors";
 import Article from "@/app/components/Article";
+import { sanityFetch } from "@sanity/lib/live";
+import { client } from "@/sanity/lib/client";
 
-import { sanityFetch } from "@sanity/lib/live"; // for other content
 import {
   BUTTON_QUERY,
   POSTER_QUERY,
   SPONSOR_QUERY,
   ARTICLE_QUERY,
 } from "@sanity/lib/queries";
-
-import { client } from "@/sanity/lib/client"; // published-only client
 
 export default async function Page() {
   const buttonData = await client.fetch(BUTTON_QUERY);
