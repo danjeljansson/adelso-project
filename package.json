@@ -18,7 +18,7 @@
     "@tailwindcss/postcss": "^4.0.3",
     "@types/google.maps": "^3.58.1",
     "@types/react-scroll": "^1.8.10",
-    "next": "^15.1.6",
+    "next": "^15.1.9",
     "next-sanity": "^9.8.51",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
