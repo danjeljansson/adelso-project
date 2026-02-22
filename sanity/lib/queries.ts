@@ -82,9 +82,10 @@ export const SPONSOR_QUERY = `*[_type == "sponsor"][] {
   }
 }`;
 
-export const BUTTON_QUERY =
-  defineQuery(`*[_type == "event" && defined(title)][0] {
+export const BUTTON_QUERY = `
+*[_type == "event" && defined(title) && !(_id in path("drafts.**")) && publishedAt < now()][0] {
   "event": title,
-  "hasCast": count(*[_type == "cast"]) > 0,
+  "hasCast": count(*[_type == "cast" && !(_id in path("drafts.**")) && publishedAt < now()]) > 0,
   ticketUrl
-  }`);
+}
+`;

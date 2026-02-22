@@ -8,7 +8,8 @@ import BuyNowButton from "@/app/components/BuyNow";
 import Shows from "@/app/components/Shows";
 import Sponsors from "@/app/components/Sponsors";
 import Article from "@/app/components/Article";
-import { sanityFetch } from "@sanity/lib/live";
+
+import { sanityFetch } from "@sanity/lib/live"; // for other content
 import {
   BUTTON_QUERY,
   POSTER_QUERY,
@@ -16,8 +17,10 @@ import {
   ARTICLE_QUERY,
 } from "@sanity/lib/queries";
 
+import { client } from "@/sanity/lib/client"; // published-only client
+
 export default async function Page() {
-  const { data: buttonData } = await sanityFetch({ query: BUTTON_QUERY });
+  const buttonData = await client.fetch(BUTTON_QUERY);
   const { data: sponsorData } = await sanityFetch({ query: SPONSOR_QUERY });
   const { data: posterData } = await sanityFetch({ query: POSTER_QUERY });
   const { data: articleData } = await sanityFetch({ query: ARTICLE_QUERY });
@@ -30,7 +33,6 @@ export default async function Page() {
           hasCast: buttonData?.hasCast,
         }}
       />
-
       {buttonData?.ticketUrl && (
         <BuyNowButton url={buttonData.ticketUrl} label="BOKA BILJETT" />
       )}
