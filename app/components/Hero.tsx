@@ -70,7 +70,7 @@ const Hero = ({
         <ul className="flex flex-col gap-12 p-2">
           <HorizontalList
             buttonData={buttonData}
-            onClick={() => setBurgerOpen(false)}
+            onClickAction={() => setBurgerOpen(false)}
           />
         </ul>
       </nav>

@@ -1,10 +1,12 @@
+import React from "react";
 import { sanityFetch } from "@sanity/lib/live";
 import { POSTS_QUERY } from "@sanity/lib/queries";
 
-export async function Posts() {
+const Posts = async () => {
   const { data: posts } = await sanityFetch({
     query: POSTS_QUERY,
   });
+
   return (
     <ul className="container mx-auto grid grid-cols-1 divide-y divide-blue-100">
       {posts.map((post) => (
@@ -19,4 +21,6 @@ export async function Posts() {
       ))}
     </ul>
   );
-}
+};
+
+export default Posts;

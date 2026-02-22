@@ -10,21 +10,21 @@ type ButtonData = {
 
 type ListItemProps = {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClickAction?: () => void;
   to: string;
 };
 
 const ListItem: React.FunctionComponent<ListItemProps> = ({
   to,
   children,
-  onClick,
+  onClickAction,
 }) => (
   <li className="rounded bg-gray-950 px-2 py-1 text-center text-white transition-colors duration-200 hover:bg-gray-800">
     <Link
       to={to}
       smooth={true}
       duration={500}
-      onClick={onClick}
+      onClick={onClickAction}
       className="cursor-pointer"
     >
       {children}
@@ -33,31 +33,27 @@ const ListItem: React.FunctionComponent<ListItemProps> = ({
 );
 
 export default function HorizontalList({
-  onClick,
+  onClickAction,
   buttonData,
 }: {
-  onClick?: () => void;
+  onClickAction?: () => void;
   buttonData?: ButtonData;
 }) {
   return (
     <ul className="css:none flex flex-col items-center gap-12 sm:flex-row sm:gap-4">
-      {/*<ListItem onClick={onClick} to="ticket">*/}
-      {/*  Boka Biljett*/}
-      {/*</ListItem>*/}
-
       {buttonData?.title && (
-        <ListItem onClick={onClick} to="intro">
+        <ListItem onClickAction={onClickAction} to="intro">
           {buttonData.title}
         </ListItem>
       )}
 
       {buttonData?.hasCast && (
-        <ListItem onClick={onClick} to="ensemble">
+        <ListItem onClickAction={onClickAction} to="ensemble">
           Medverkande
         </ListItem>
       )}
 
-      <ListItem onClick={onClick} to="contact">
+      <ListItem onClickAction={onClickAction} to="contact">
         Hitta Hit
       </ListItem>
     </ul>
