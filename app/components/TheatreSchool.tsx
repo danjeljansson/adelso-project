@@ -11,7 +11,10 @@ export function TheatreSchool({ schoolPost }: TheatreSchoolProps) {
   const { title, mainImage, body } = schoolPost;
 
   return (
-    <section className="text-gold-600 mx-auto my-12 w-full max-w-3xl rounded-lg border border-gray-200 bg-gradient-to-br from-pastel-green to-white p-6 shadow-lg">
+    <section
+      id="school"
+      className="text-gold-600 mx-auto my-12 w-full max-w-3xl rounded-lg border border-gray-200 bg-gradient-to-br from-pastel-green to-white p-6 shadow-lg"
+    >
       {title && (
         <h2 className="text-gold-600 prose mb-6 text-center font-serif text-4xl italic leading-tight">
           {title}

@@ -6,6 +6,7 @@ import React from "react";
 type ButtonData = {
   title?: string;
   hasCast?: boolean;
+  hasSchool?: boolean;
 };
 
 type ListItemProps = {
@@ -50,6 +51,12 @@ export default function HorizontalList({
       {buttonData?.hasCast && (
         <ListItem onClickAction={onClickAction} to="ensemble">
           Medverkande
+        </ListItem>
+      )}
+
+      {buttonData?.hasSchool && (
+        <ListItem onClickAction={onClickAction} to="school">
+          Teaterskola
         </ListItem>
       )}
 

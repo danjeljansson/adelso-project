@@ -29,6 +29,7 @@ export default async function Page() {
   const { data: articleData } = await sanityFetch({ query: ARTICLE_QUERY });
 
   const schoolPosts: SCHOOL_QUERYResult = await client.fetch(SCHOOL_QUERY);
+  const hasSchool = schoolPosts.length > 0;
 
   return (
     <div className="flex flex-col justify-center">
@@ -36,6 +37,7 @@ export default async function Page() {
         buttonData={{
           title: buttonData?.event ?? "",
           hasCast: buttonData?.hasCast,
+          hasSchool: hasSchool,
         }}
       />
       {buttonData?.ticketUrl && (

@@ -11,7 +11,7 @@ import Image from "next/image";
 const Hero = ({
   buttonData,
 }: {
-  buttonData: { title?: string; hasCast?: boolean };
+  buttonData: { title?: string; hasCast?: boolean; hasSchool?: boolean };
 }) => {
   const [burgerOpen, setBurgerOpen] = useState(false);
 

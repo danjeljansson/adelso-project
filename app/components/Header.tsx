@@ -3,7 +3,7 @@ import ListItems from "@/app/components/ListItems";
 const Header = ({
   buttonData,
 }: {
-  buttonData: { title?: string; hasCast?: boolean };
+  buttonData: { title?: string; hasCast?: boolean; hasSchool?: boolean };
 }) => {
   return (
     <header className="flex flex-col items-center justify-center bg-transparent">
