@@ -8,6 +8,9 @@ import BuyNowButton from "@/app/components/BuyNow";
 import Shows from "@/app/components/Shows";
 import Sponsors from "@/app/components/Sponsors";
 import Article from "@/app/components/Article";
+import { TheatreSchool } from "@/app/components/TheatreSchool";
+import { SCHOOL_QUERYResult } from "@/sanity.types";
+
 import { sanityFetch } from "@sanity/lib/live";
 import { client } from "@/sanity/lib/client";
 
@@ -16,6 +19,7 @@ import {
   POSTER_QUERY,
   SPONSOR_QUERY,
   ARTICLE_QUERY,
+  SCHOOL_QUERY,
 } from "@sanity/lib/queries";
 
 export default async function Page() {
@@ -23,6 +27,8 @@ export default async function Page() {
   const { data: sponsorData } = await sanityFetch({ query: SPONSOR_QUERY });
   const { data: posterData } = await sanityFetch({ query: POSTER_QUERY });
   const { data: articleData } = await sanityFetch({ query: ARTICLE_QUERY });
+
+  const schoolPosts: SCHOOL_QUERYResult = await client.fetch(SCHOOL_QUERY);
 
   return (
     <div className="flex flex-col justify-center">
@@ -42,6 +48,10 @@ export default async function Page() {
       <Shows />
       <Sponsors sponsorData={sponsorData} />
       <Article articleData={articleData} />
+      {schoolPosts.length > 0 &&
+        schoolPosts.map((post) => (
+          <TheatreSchool key={post._id} schoolPost={post} />
+        ))}
       <Posts />
       <FindUs />
     </div>

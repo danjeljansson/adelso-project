@@ -11,6 +11,7 @@
  * https://www.sanity.io/docs/sanity-typegen
  * ---------------------------------------------------------------------------------
  */
+import { PortableTextBlock } from "@sanity/types";
 
 // Source: schema.json
 export type SanityImagePaletteSwatch = {
@@ -642,6 +643,22 @@ export type CAST_QUERYResult = Array<{
   about: string | null;
   castImageUrl: string | null;
 }>;
+export type SCHOOL_QUERYResult = {
+  _id: string;
+  _type: "teaterskola";
+  title: string;
+  slug: string;
+  author?: string;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type?: string;
+    };
+    alt?: string;
+  };
+  publishedAt?: string;
+  body?: PortableTextBlock[];
+}[];
 // Variable: BUTTON_QUERY
 // Query: *[_type == "event" && defined(title)][0] {  "event": title,  "hasCast": count(*[_type == "cast"]) > 0,  ticketUrl  }
 export type BUTTON_QUERYResult = {
@@ -659,5 +676,6 @@ declare module "@sanity/client" {
     '*[_type == "event" && defined(publishedAt) && publishedAt <= now()] \n  | order(publishedAt desc)[0] {\n    _id,\n    _type,\n    title,\n    subheading,\n    slug,\n    "authorName": author->name,\n    mainImage,\n    publishedAt,\n    body,\n    cast ->\n  }': EVENT_QUERYResult;
     '*[_type == "cast"] | order(_createdAt desc) {\n    _id,\n    _type,\n    name,\n    role,\n    about,\n    "castImageUrl": image.asset->url\n  }\n': CAST_QUERYResult;
     '*[_type == "event" && defined(title)][0] {\n  "event": title,\n  "hasCast": count(*[_type == "cast"]) > 0,\n  ticketUrl\n  }': BUTTON_QUERYResult;
+    '*[_type == "school"] {\n  _id,\n  _type,\n  title,\n  slug,\n  author->name,\n  mainImage{\n    asset->{\n      _ref,\n      _type\n    },\n    alt\n  },\n  publishedAt,\n  body\n}': SCHOOL_QUERYResult;
   }
 }

@@ -89,3 +89,25 @@ export const BUTTON_QUERY = `
   ticketUrl
 }
 `;
+
+export const SCHOOL_QUERY = `
+*[
+  _type == "teaterskola" &&
+  defined(publishedAt) &&
+  publishedAt <= now() &&
+  !(_id in path("drafts.**"))
+]
+| order(publishedAt desc) {
+  _id,
+  _type,
+  title,
+  "slug": slug.current,
+  "author": author->name,
+  mainImage{
+    asset,
+    alt
+  },
+  publishedAt,
+  body
+}
+`;
