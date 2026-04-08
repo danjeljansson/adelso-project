@@ -30,7 +30,10 @@ const Sponsors: React.FunctionComponent<SponsorsProps> = ({ sponsorData }) => {
   if (allSponsors.length === 0) return null;
 
   return (
-    <section className="text-gold-600 mx-auto my-12 w-full max-w-3xl rounded-lg border border-gray-200 bg-gradient-to-br from-pastel-green to-white p-6 shadow-lg">
+    <section
+      id="sponsor"
+      className="text-gold-600 mx-auto my-12 w-full max-w-3xl rounded-lg border border-gray-200 bg-gradient-to-br from-pastel-green to-white p-6 shadow-lg"
+    >
       <h2 className="text-gold-600 prose mb-6 text-center font-serif text-4xl italic leading-tight">
         Stort tack till
       </h2>

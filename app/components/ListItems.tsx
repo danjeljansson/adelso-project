@@ -54,6 +54,10 @@ export default function HorizontalList({
         </ListItem>
       )}
 
+      <ListItem onClickAction={onClickAction} to="sponsor">
+        Tack till
+      </ListItem>
+
       {buttonData?.hasSchool && (
         <ListItem onClickAction={onClickAction} to="school">
           Teaterskola
